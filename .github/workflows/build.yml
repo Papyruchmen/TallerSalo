@@ -31,19 +31,15 @@ jobs:
           Compress-Archive -Path "dist\TallerMecanico" -DestinationPath "TallerMecanico-Windows.zip"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: TallerMecanico-Windows
           path: TallerMecanico-Windows.zip
           retention-days: 30
-        env:
-          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
       - name: Upload executable folder
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: TallerMecanico-Folder
           path: dist\TallerMecanico
           retention-days: 30
-        env:
-          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
