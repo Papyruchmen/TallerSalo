@@ -220,8 +220,10 @@ class OrdenServicioDialog(QDialog):
         self.vehiculo_combo.setToolTip("Seleccione el vehículo al que se le realizará el servicio")
         if vehiculos:
             for v in vehiculos:
+                marca = v[1] if len(v) > 1 else ""
+                modelo = v[2] if len(v) > 2 else ""
                 placa = v[3] if len(v) > 3 and v[3] else "Sin placa"
-                self.vehiculo_combo.addItem(f"{v[2]} {v[3] if len(v) > 3 else ''} - {placa}", v[0])
+                self.vehiculo_combo.addItem(f"{marca} {modelo} - {placa}", v[0])
 
         self.estado_combo = QComboBox()
         self.estado_combo.setToolTip("Estado actual de la orden de servicio")
@@ -336,7 +338,10 @@ class OrdenServicioDialog(QDialog):
 
         self.vehiculo_combo.clear()
         for v in vehiculos:
-            self.vehiculo_combo.addItem(f"{v[1]} {v[2]} - {v[3]}", v[0])
+            marca = v[1] if len(v) > 1 else ""
+            modelo = v[2] if len(v) > 2 else ""
+            placa = v[3] if len(v) > 3 and v[3] else "Sin placa"
+            self.vehiculo_combo.addItem(f"{marca} {modelo} - {placa}", v[0])
 
     def agregar_servicio(self):
         row = self.servicios_table.rowCount()
