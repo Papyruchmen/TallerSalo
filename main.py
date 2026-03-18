@@ -387,12 +387,13 @@ class OrdenServicioDialog(QDialog):
             rep = cursor.fetchone()
             conn.close()
 
-            row = self.repuestos_table.rowCount()
-            self.repuestos_table.insertRow(row)
-            self.repuestos_table.setItem(row, 0, QTableWidgetItem(rep[0]))
-            self.repuestos_table.setItem(row, 1, QTableWidgetItem(rep[1]))
-            self.repuestos_table.setItem(row, 2, QTableWidgetItem(str(cantidad)))
-            self.repuestos_table.setItem(row, 3, QTableWidgetItem(f"{rep[2]:.2f}"))
+            if rep:
+                row = self.repuestos_table.rowCount()
+                self.repuestos_table.insertRow(row)
+                self.repuestos_table.setItem(row, 0, QTableWidgetItem(rep[0]))
+                self.repuestos_table.setItem(row, 1, QTableWidgetItem(rep[1]))
+                self.repuestos_table.setItem(row, 2, QTableWidgetItem(str(cantidad)))
+                self.repuestos_table.setItem(row, 3, QTableWidgetItem(f"{rep[2]:.2f}"))
 
     def eliminar_repuesto(self):
         row = self.repuestos_table.currentRow()
